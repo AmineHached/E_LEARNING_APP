@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container text-center">
+  {% if user.is_authenticated %}
+  <h3>Welcome, <span class="text-uppercase">{{user.username}}</span> </h3>
+  <hr>
+  {% endif %}
+
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <a href="{% url 'courses' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/notes.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Browse Courses
+            </h5>
+            Check Courses
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% if user.role == "tutor" %}
+        <div class="col-md-4">
+      <a href="{% url 'managecourse' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/assignment.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Manage Courses
+            </h5>
+            Create or Delete Courses
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% endif %}
+    {% if user.role == "student" %}
+        <div class="col-md-4">
+      <a href="{% url 'grades' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/books.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Check Grades
+            </h5>
+            Check your assignements Grades
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% endif %}
+    {% if user.role == 'student' %}
+        <div class="col-md-4">
+      <a href="{% url 'assignment' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/assignment.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Assignments
+            </h5>
+            Add assignments with deadlines. They will be displayed prioritised by deadlines
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+
+        {% if user.role == 'tutor' %}
+        <div class="col-md-4">
+      <a href="{% url 'submissionmanage' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/assignment.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Give Grades
+            </h5>
+            Give grades to submissions
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+  <br><br><br>
+
+
+  <div class="row pb-5">
+
+
+  </div>
+
+
+</section>
+{% endblock content %}

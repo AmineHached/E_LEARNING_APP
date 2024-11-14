@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %}
+{% load crispy_forms_tags%}
+{% block content %}
+<section style="height: 100%">
+  <div class="container py-3" style="display: flex; justify-content: center; align-items: center; height: 100%">
+      <div style="max-width: 500px; min-width: 300px" >
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover">
+            <h5 class="my-3">{{user.username}}</h5>
+            <h6 class="text-muted text-center">{{user.role}}</h6>
+            <div class="d-flex justify-content-center mb-2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+{% endblock content %}

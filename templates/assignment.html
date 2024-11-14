@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container" style="">
+    {% for assignment in assignments %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{assignment.title}}</p>
+            <p class="text-muted mb-0">Description: {{assignment.description}}</p>
+            <p class="text-muted mb-0">Due Date: {{assignment.due_date}}</p>
+          </div>
+        </div>
+        <a class="btn btn-link btn-rounded btn-sm btn-danger" style="text-decoration: none; color: white" href="{{assignment.link}}" role="button">Submit</a>
+      </li>
+
+  {% endfor %}
+</div>
+{% endblock content %}

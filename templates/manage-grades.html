@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <ul class="list-group list-group-light">
+        {% for submission in submissions %}
+
+      <form method="POST" action="/submission/manage">
+        {% csrf_token %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Assignment ID: {{submission.assignment}}</p>
+            <p class="text-muted mb-0">Content: {{submission.submission_content}}</p>
+            <p class="text-muted mb-0">Date: {{submission.submission_date}}</p>
+            <input placeholder="GRADE" type="text" name="Grade" />
+            <input placeholder="feedback" type="text" name="feedback" />
+            <input type="text" name="id_submission" value="{{submission.id}}"  />
+            <input type="submit" name="SubmitGrade" />
+          </div>
+        </div>
+      </li>
+        </form>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

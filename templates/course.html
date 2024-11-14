@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class='text-center container'>
+
+    <div class="container">
+        <div class="content-section p-0 mt-5">
+
+            <div class="m-3">
+                <h2>{{course.title}}</h2>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{course.description}}
+            </p>
+    <ul class="list-group list-group-light">
+
+    </ul>
+            <form method="POST" class="list-group list-group-light">
+                {% csrf_token %}
+                {% if not course.enrolled and not user.role == 'tutor' %}
+                <input type="submit" class="button" style="margin: 0 20px" name="enroll" value="Enroll">
+                {% else %}
+                            {% for material in materials %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <div class="text-left">
+                <p class="fw-bold mb-1">{{material.title}}</p>
+                <p class="text-muted mb-1">Document Type: {{material.document_type}}</p>
+                <p class="text-muted mb-0">Content: {{material.content}}</p>
+              </div>
+            </div>
+          </li>
+            {% endfor %}
+
+                {% endif %}
+            </form>
+
+            <br/>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <ul class="list-group list-group-light">
+        {% for grade in grades %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Assignment ID: {{grade.assigment}}</p>
+            <p class="text-muted mb-0">Grade: {{grade.grade}}</p>
+            <p class="text-muted mb-0">Feedback: {{grade.feedback}}</p>
+          </div>
+        </div>
+      </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}
